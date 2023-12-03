@@ -16,6 +16,7 @@ import jakarta.persistence.TemporalType;
 @Table(name = "compra")
 public class Compra implements Serializable{
 	
+	
 	public Compra() {
 		super();
 	}

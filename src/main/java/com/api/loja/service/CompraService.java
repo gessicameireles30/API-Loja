@@ -10,25 +10,23 @@ import com.api.loja.repository.CompraRepository;
 
 @Service
 public class CompraService {
-	
-	@Autowired
-	private CompraRepository compraRepository;
 
-	public List<Compra> listar() {
-		return compraRepository.findAll();
-	}
-	
-	public Compra salvar(Compra compra) {
-		Compra compraAtual =  compraRepository.save(compra);
-		return compraAtual;
-	}
-	
-	public Compra buscar(Long id) {
-		Compra compraAtual = compraRepository.findById(id).get();
-		return compraAtual;
-	}
-	
-	public void excluir(Long id) {
-		compraRepository.deleteById(id);
-	}
+    @Autowired
+    private CompraRepository compraRepository;
+
+    public List<Compra> listar() {
+        return compraRepository.findAll();
+    }
+
+    public Compra salvar(Compra compra) {
+        return compraRepository.save(compra);
+    }
+
+    public Compra buscar(Long id) {
+        return compraRepository.findById(id).orElse(null);
+    }
+
+    public void excluir(Long id) {
+        compraRepository.deleteById(id);
+    }
 }

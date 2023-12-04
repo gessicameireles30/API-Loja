@@ -7,19 +7,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "cliente")
 public class Cliente implements Serializable {
 
-	public Cliente() {
-		super();
-	}
-
 	private static final long serialVersionUID = 1L;
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	private String nome;
@@ -29,6 +24,10 @@ public class Cliente implements Serializable {
 	
 	@ManyToOne
 	private Cidade cidade;
+	
+	public Cliente() {
+		super();
+	}
 	
 	public Long getId() {
 		return id;

@@ -20,6 +20,7 @@ import jakarta.persistence.Table;
 public class Produto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -28,8 +29,6 @@ public class Produto implements Serializable {
 	private Double valorVenda;
 	private String marca;
 	private Double quantidadeEstoque = 0.;
-	private String nomeImagem;
-
 	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "PRODUTO_CATEGORIA", joinColumns = @JoinColumn(name = "produto_id"), 
@@ -38,14 +37,6 @@ public class Produto implements Serializable {
 
 	public Produto() {
 		super();
-	}
-
-	public String getNomeImagem() {
-		return nomeImagem;
-	}
-
-	public void setNomeImagem(String nomeImagem) {
-		this.nomeImagem = nomeImagem;
 	}
 
 	public Long getId() {

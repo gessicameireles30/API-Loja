@@ -15,16 +15,11 @@ import jakarta.persistence.TemporalType;
 @Entity
 @Table(name = "compra")
 public class Compra implements Serializable{
-	
-	
-	public Compra() {
-		super();
-	}
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@ManyToOne
@@ -36,6 +31,12 @@ public class Compra implements Serializable{
 	private String formaPagamento;
 	
 	private Double valorTotal = 0.;
+	
+	
+	public Compra() {
+		super();
+	}
+
 
 	public Long getId() {
 		return id;

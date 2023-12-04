@@ -1,22 +1,15 @@
 package com.api.loja.model;
 
-import java.io.Serializable;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
-@Table(name = "cidade")
-public class Cidade implements Serializable {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class ProdutoImagem {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -24,18 +17,15 @@ public class Cidade implements Serializable {
 	private String nome;
 	
 	@ManyToOne
-	private Estado estado;
+	private Produto produto;
 	
-	public Cidade() {
-		super();
-	}
+	 @Transient
+	 private byte[] arquivo; 
+	 
+	 public ProdutoImagem() {}
 
 	public Long getId() {
 		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getNome() {
@@ -45,21 +35,28 @@ public class Cidade implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-	public Estado getEstado() {
-		return estado;
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public void setEstado(Estado estado) {
-		this.estado = estado;
+	public Produto getProduto() {
+		return produto;
 	}
 
-	@Override
-	public String toString() {
-		return nome + "-"+estado.getSigla();
+	public void setProduto(Produto produto) {
+		this.produto = produto;
 	}
 
+	public byte[] getArquivo() {
+		return arquivo;
+	}
 
-	
+	public void setArquivo(byte[] arquivo) {
+		this.arquivo = arquivo;
+	}
+	 
+	 
+	 
+	 
 }
-

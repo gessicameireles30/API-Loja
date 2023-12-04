@@ -13,13 +13,9 @@ import jakarta.persistence.Table;
 @Table(name = "itens_compra")
 public class ItensCompra implements Serializable {
 
-	public ItensCompra() {
-		super();
-	}
-
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@ManyToOne
@@ -34,8 +30,12 @@ public class ItensCompra implements Serializable {
 	
 	private Double valorTotal = 0.;
 	
-	
 
+	public ItensCompra() {
+		super();
+	}
+	
+	
 	public Double getValorTotal() {
 		return valorTotal;
 	}

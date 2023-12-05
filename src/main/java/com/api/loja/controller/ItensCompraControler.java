@@ -8,42 +8,42 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.api.loja.model.ItensCompra;
 import com.api.loja.service.ItensCompraService;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
-
 @RestController
 @RequestMapping("/itensCompra")
 public class ItensCompraControler {
-	
+
 	@Autowired
-    private ItensCompraService itensCompraService;
+	private ItensCompraService itensCompraService;
 
-    @GetMapping
-    public List<ItensCompra> listarItensCompra() {
-        List<ItensCompra> itensCompraList = itensCompraService.listar();
-        return itensCompraList;
-    }
+	@GetMapping
+	public List<ItensCompra> listarItensCompra() {
+		List<ItensCompra> itensCompraList = itensCompraService.listar();
+		return itensCompraList;
+	}
 
-    @PostMapping
-    public ItensCompra salvarItensCompra(@RequestBody ItensCompra itensCompra) {
-        ItensCompra itensCompraSalvo = itensCompraService.salvar(itensCompra);
-        return itensCompraSalvo;
-    }
+	@PostMapping
+	public ItensCompra salvarItensCompra(@RequestBody ItensCompra itensCompra) {
+		ItensCompra itensCompraSalvo = itensCompraService.salvar(itensCompra);
+		System.out.println(itensCompra.toString());
+		return itensCompraSalvo;
+	}
 
-    @GetMapping("/{id}")
-    public ItensCompra buscarItensCompra(@PathVariable Long id) {
-        ItensCompra itensCompra = itensCompraService.buscar(id);
-        return itensCompra;
-    }
+	@GetMapping("/{id}")
+	public ItensCompra buscarItensCompra(@PathVariable Long id) {
+		ItensCompra itensCompra = itensCompraService.buscar(id);
+		return itensCompra;
+	}
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> excluirItensCompra(@PathVariable Long id) {
-        itensCompraService.excluir(id);
-        return ResponseEntity.noContent().build();
-    }
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> excluirItensCompra(@PathVariable Long id) {
+		itensCompraService.excluir(id);
+		return ResponseEntity.noContent().build();
+	}
 }

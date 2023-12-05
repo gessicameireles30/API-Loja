@@ -14,6 +14,7 @@ import jakarta.persistence.Table;
 public class ItensCompra implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -24,18 +25,16 @@ public class ItensCompra implements Serializable {
 	@ManyToOne
 	private Compra compra;
 
-	private Integer quantidade;
+	private int quantidade;
 
 	private Double valorUnitario = 0.;
-	
+
 	private Double valorTotal = 0.;
-	
 
 	public ItensCompra() {
 		super();
 	}
-	
-	
+
 	public Double getValorTotal() {
 		return valorTotal;
 	}
@@ -68,14 +67,11 @@ public class ItensCompra implements Serializable {
 		this.compra = compra;
 	}
 
-	public Integer getQuantidade() {
-		if(quantidade == null) {
-			quantidade  =0;
-		}
+	public int getQuantidade() {
 		return quantidade;
 	}
 
-	public void setQuantidade(Integer quantidade) {
+	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
 
@@ -87,5 +83,12 @@ public class ItensCompra implements Serializable {
 		this.valorUnitario = valorUnitario;
 	}
 
-}
+	@Override
+	public String toString() {
+		return "ItensCompra [id=" + id + ", produto=" + produto + ", compra=" + compra + ", quantidade=" + quantidade
+				+ ", valorUnitario=" + valorUnitario + ", valorTotal=" + valorTotal + "]";
+	}
+	
+	
 
+}
